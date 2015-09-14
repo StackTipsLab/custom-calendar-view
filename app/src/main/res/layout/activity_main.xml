@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
+    <com.imanoweb.calendarview.CustomCalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/off_white"
+        app:calendarBackgroundColor="@color/off_white"
+        app:calendarTitleTextColor="@color/black"
+        app:currentDayOfMonthColor="@color/blue"
+        app:dayOfMonthTextColor="@color/black"
+        app:dayOfWeekTextColor="@color/black"
+        app:disabledDayBackgroundColor="@color/off_white"
+        app:disabledDayTextColor="@color/grey"
+        app:selectedDayBackgroundColor="@color/blue"
+        app:titleLayoutBackgroundColor="@color/white"
+        app:weekLayoutBackgroundColor="@color/white"
+
+        />
+</LinearLayout>
