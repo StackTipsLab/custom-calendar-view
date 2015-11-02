@@ -147,7 +147,7 @@ Custom Calendar View Library in Android Decorator
 ## License
 ```
 /*
- * Copyright (C) 2015 ImanoWeb {link: http://imanoweb.com}.
+ * Copyright (C) 2015 JavaTechig {link: http://javatechig.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
