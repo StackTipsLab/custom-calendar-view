@@ -168,7 +168,10 @@ public class CustomCalendarView extends LinearLayout {
         final String[] weekDaysArray = new DateFormatSymbols(locale).getShortWeekdays();
         for (int i = 1; i < weekDaysArray.length; i++) {
             dayOfTheWeekString = weekDaysArray[i];
-            dayOfTheWeekString = dayOfTheWeekString.substring(0, 3).toUpperCase();
+            if(dayOfTheWeekString.length() > 3){
+                dayOfTheWeekString = dayOfTheWeekString.substring(0, 3).toUpperCase();
+            }
+            
             dayOfWeek = (TextView) view.findViewWithTag(DAY_OF_WEEK + getWeekIndex(i, currentCalendar));
             dayOfWeek.setText(dayOfTheWeekString);
             dayOfWeek.setTextColor(dayOfWeekTextColor);
