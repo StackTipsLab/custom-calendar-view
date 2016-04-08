@@ -219,6 +219,8 @@ public class CustomCalendarView extends LinearLayout {
                 dayOfMonthContainer.setOnClickListener(onDayOfMonthClickListener);
                 dayView.setBackgroundColor(calendarBackgroundColor);
                 dayView.setTextColor(dayOfWeekTextColor);
+                //Set the current day color
+                markDayAsCurrentDay(startCalendar);
             } else {
                 dayView.setBackgroundColor(disabledDayBackgroundColor);
                 dayView.setTextColor(disabledDayTextColor);
@@ -231,8 +233,7 @@ public class CustomCalendarView extends LinearLayout {
             }
             dayView.decorate();
 
-            //Set the current day color
-            markDayAsCurrentDay(startCalendar);
+
 
             startCalendar.add(Calendar.DATE, 1);
             dayOfMonthIndex++;
