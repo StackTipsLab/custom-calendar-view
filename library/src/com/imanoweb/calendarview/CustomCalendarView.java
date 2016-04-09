@@ -287,6 +287,7 @@ public class CustomCalendarView extends LinearLayout {
             final DayView dayView = getDayOfMonthText(calendar);
             dayView.setBackgroundColor(calendarBackgroundColor);
             dayView.setTextColor(dayOfWeekTextColor);
+            dayView.decorate();
         }
     }
 
