@@ -58,13 +58,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
+        if (item.getItemId() == R.id.action_about) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("http://stacktips.com"));
             startActivity(intent);
@@ -75,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final String selectedValue = listData[position];
-
         if (selectedValue.equals(getString(R.string.simple_calendar))) {
             startActivity(new Intent(this, SimpleCalendarActivity.class));
         } else if (selectedValue.equals(getString(R.string.calendar_day_decorator))) {
