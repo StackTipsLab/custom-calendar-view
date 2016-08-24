@@ -16,28 +16,23 @@ package com.imanoweb.customcalendarsample;
  * limitations under the License.
  */
 
-import android.graphics.Color;
-import android.graphics.Typeface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
-import com.imanoweb.calendarview.CalendarListener;
-import com.imanoweb.calendarview.CustomCalendarView;
-import com.imanoweb.calendarview.DayDecorator;
-import com.imanoweb.calendarview.DayView;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
-    CustomCalendarView calendarView;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
+    private ListView listView;
+    private String[] listData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,59 +41,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Initialize CustomCalendarView from layout
-        calendarView = (CustomCalendarView) findViewById(R.id.calendar_view);
+        listData = getResources().getStringArray(R.array.calendar_demos);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.simple_list_item, R.id.textView, listData);
 
-        //Initialize calendar with date
-        Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
-
-        //Show monday as first date of week
-        calendarView.setFirstDayOfWeek(Calendar.MONDAY);
-
-        //Show/hide overflow days of a month
-        calendarView.setShowOverflowDate(false);
-
-        //call refreshCalendar to update calendar the view
-        calendarView.refreshCalendar(currentCalendar);
-
-        //Handling custom calendar events
-        calendarView.setCalendarListener(new CalendarListener() {
-            @Override
-            public void onDateSelected(Date date) {
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                Toast.makeText(MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onMonthChanged(Date date) {
-                SimpleDateFormat df = new SimpleDateFormat("MM-yyyy");
-                Toast.makeText(MainActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //Setting custom font
-        /*final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Arch_Rival_Bold.ttf");
-        if (null != typeface) {
-            calendarView.setCustomTypeface(typeface);
-            calendarView.refreshCalendar(currentCalendar);
-        }*/
-
-
-        //adding calendar day decorators
-        /*List<DayDecorator> decorators = new ArrayList<>();
-        decorators.add(new ColorDecorator());
-        calendarView.setDecorators(decorators);
-        calendarView.refreshCalendar(currentCalendar);*/
-    }
-
-    private class ColorDecorator implements DayDecorator {
-
-        @Override
-        public void decorate(DayView cell) {
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            cell.setBackgroundColor(color);
-        }
+        listView = (ListView) findViewById(R.id.demo_list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
     }
 
     @Override
@@ -116,10 +64,26 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_about) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://stacktips.com"));
+            startActivity(intent);
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final String selectedValue = listData[position];
+
+        if (selectedValue.equals(getString(R.string.simple_calendar))) {
+            startActivity(new Intent(this, SimpleCalendarActivity.class));
+        } else if (selectedValue.equals(getString(R.string.calendar_day_decorator))) {
+            startActivity(new Intent(this, CalendarDayDecoratorActivity.class));
+        } else if (selectedValue.equals(getString(R.string.customizing_custom_calendar))) {
+            startActivity(new Intent(this, CustomisedCalendarActivity.class));
+        } else {
+            Toast.makeText(this, "Feature not implemented!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
