@@ -23,7 +23,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.imanoweb.customcalendarsample.R;
 import com.stacktips.view.CalendarListener;
 import com.stacktips.view.CustomCalendarView;
 import com.stacktips.view.DayDecorator;

@@ -29,8 +29,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.imanoweb.customcalendarsample.R;
-
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView listView;

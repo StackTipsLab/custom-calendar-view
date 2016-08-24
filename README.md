@@ -11,7 +11,7 @@ Currently it supports the following features:
 * Unlimited customizations for day of the month using custom Decorators.
 * Allow you to handle event when user changes month and day selection.
 
-If you enjoy this library, don’t forget to follow me on my twitter handle [@javatechig](https://www.twitter.com/npanigrahy) or visit my blog at [http://javatechig.com](https://javatechig.com/)
+If you enjoy this library, don’t forget to follow me on my twitter handle [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my blog at [http://stacktips.com](https://stacktips.com/)
 
 ![alt text][logo]
 
@@ -142,12 +142,12 @@ calendarView.setDecorators(decorators);
 calendarView.refreshCalendar(currentCalendar);
 Custom Calendar View Library in Android Decorator
 ```
-<img src="http://javatechig.com/wp-content/uploads/2015/09/Custom-Calendar-View-Library-in-Android-Decorator.png" height="350">
+<img src="http://stacktips.com/wp-content/uploads/2015/09/Custom-Calendar-View-Library-in-Android-Decorator.png" height="350">
 
 ## License
 ```
 /*
- * Copyright (C) 2015 JavaTechig {link: http://javatechig.com}.
+ * Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
