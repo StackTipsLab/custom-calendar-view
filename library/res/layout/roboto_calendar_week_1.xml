@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:tag="dayOfMonthContainer1">
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:tag="dayOfMonthContainer2">
 
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:tag="dayOfMonthContainer3">
 
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
         android:tag="dayOfMonthContainer4">
 
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
         android:layout_weight="1"
         android:tag="dayOfMonthContainer5">
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
         android:layout_weight="1"
         android:tag="dayOfMonthContainer6">
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         android:layout_weight="1"
         android:tag="dayOfMonthContainer7">
 
-        <com.imanoweb.calendarview.DayView
+        <com.stacktips.view.DayView
             style="@style/CalendarView.DayOfTheMonth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

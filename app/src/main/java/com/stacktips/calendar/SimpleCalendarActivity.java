@@ -1,7 +1,7 @@
-package com.imanoweb.customcalendarsample;
+package com.stacktips.calendar;
 
 /*
- * Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
+ *  Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,21 @@ package com.imanoweb.customcalendarsample;
  * limitations under the License.
  */
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
-import com.imanoweb.calendarview.CalendarListener;
-import com.imanoweb.calendarview.CustomCalendarView;
 
+import com.imanoweb.customcalendarsample.R;
+import com.stacktips.view.CalendarListener;
+import com.stacktips.view.CustomCalendarView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class CustomisedCalendarActivity extends AppCompatActivity {
+public class SimpleCalendarActivity extends AppCompatActivity {
     CustomCalendarView calendarView;
 
     @Override
@@ -63,22 +63,15 @@ public class CustomisedCalendarActivity extends AppCompatActivity {
             @Override
             public void onDateSelected(Date date) {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                Toast.makeText(CustomisedCalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SimpleCalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onMonthChanged(Date date) {
                 SimpleDateFormat df = new SimpleDateFormat("MM-yyyy");
-                Toast.makeText(CustomisedCalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SimpleCalendarActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
         });
-
-        //Setting custom font
-        final Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Arch_Rival_Bold.ttf");
-        if (null != typeface) {
-            calendarView.setCustomTypeface(typeface);
-            calendarView.refreshCalendar(currentCalendar);
-        }
     }
 
     @Override
@@ -87,6 +80,7 @@ public class CustomisedCalendarActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

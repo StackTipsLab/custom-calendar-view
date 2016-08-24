@@ -1,4 +1,4 @@
-package com.imanoweb.calendarview;
+package com.stacktips.view;
 
 /**
  * Created by Nilanchala on 9/8/15.

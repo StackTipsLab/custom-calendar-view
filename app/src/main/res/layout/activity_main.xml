@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:background="@color/bg_color"
-    tools:context=".MainActivity">
+    tools:context="com.stacktips.calendar.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

@@ -1,7 +1,7 @@
-package com.imanoweb.customcalendarsample;
+package com.stacktips.calendar;
 
 /*
- * Copyright (C) 2015 ImanoWeb {link: http://imanoweb.com}.
+ *  Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.imanoweb.customcalendarsample.R;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 

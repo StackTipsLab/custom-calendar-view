@@ -1,4 +1,4 @@
-package com.imanoweb.calendarview;
+package com.stacktips.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.imanoweb.calendarview.R;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;

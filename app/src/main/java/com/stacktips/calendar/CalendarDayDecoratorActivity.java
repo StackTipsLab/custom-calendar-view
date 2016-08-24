@@ -1,4 +1,4 @@
-package com.imanoweb.customcalendarsample;
+package com.stacktips.calendar;
 
 /*
  * Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
@@ -23,10 +23,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.imanoweb.calendarview.CalendarListener;
-import com.imanoweb.calendarview.CustomCalendarView;
-import com.imanoweb.calendarview.DayDecorator;
-import com.imanoweb.calendarview.DayView;
+import com.imanoweb.customcalendarsample.R;
+import com.stacktips.view.CalendarListener;
+import com.stacktips.view.CustomCalendarView;
+import com.stacktips.view.DayDecorator;
+import com.stacktips.view.DayView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
