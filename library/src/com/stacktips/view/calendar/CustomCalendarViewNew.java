@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.stacktips.view.DayView;
 import com.stacktips.view.utils.Utils;
 
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +32,7 @@ import java.util.Locale;
  */
 
 public class CustomCalendarViewNew extends LinearLayout {
+    private static final String TAG = CustomCalendarViewNew.class.getSimpleName();
     private Context mContext;
 
     private View view;
@@ -135,7 +138,7 @@ public class CustomCalendarViewNew extends LinearLayout {
         initializeWeekLayout();
 
         // Initialize and set days in calendar
-        //setDaysInCalendar();
+        setDaysInCalendar();
     }
 
 
@@ -144,30 +147,107 @@ public class CustomCalendarViewNew extends LinearLayout {
      */
     @SuppressLint("DefaultLocale")
     private void initializeWeekLayout() {
-        TextView dayOfWeek;
-        String dayOfTheWeekString;
-
-        //Setting background color white
         View titleLayout = view.findViewById(R.id.weekLayout);
         titleLayout.setBackgroundColor(weekLayoutBackgroundColor);
-
         final String[] weekDaysArray = new DateFormatSymbols(locale).getShortWeekdays();
         for (int i = 1; i < weekDaysArray.length; i++) {
-            dayOfTheWeekString = weekDaysArray[i];
-            if(dayOfTheWeekString.length() > 3){
+            String dayOfTheWeekString = weekDaysArray[i];
+            if (dayOfTheWeekString.length() > 3) {
                 dayOfTheWeekString = dayOfTheWeekString.substring(0, 3).toUpperCase();
             }
 
-            dayOfWeek = (TextView) view.findViewWithTag(Utils.DAY_OF_WEEK + getWeekIndex(i, currentCalendar));
+            final TextView dayOfWeek = (TextView) view.findViewWithTag(Utils.DAY_OF_WEEK + getWeekIndex(i, currentCalendar));
             dayOfWeek.setText(dayOfTheWeekString);
             dayOfWeek.setTextColor(dayOfWeekTextColor);
-
             if (null != getCustomTypeface()) {
                 dayOfWeek.setTypeface(getCustomTypeface());
             }
         }
     }
 
+   /* public static void setDaysInCalendar(){
+        //TODO remove it later
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(new Date());
+        // set its date to the first day of the month/year
+        currentCalendar.setFirstDayOfWeek(Calendar.MONDAY);
+        while (currentCalendar.get(Calendar.DATE) > 1) {
+            currentCalendar.add(Calendar.DATE, -1); // Substract 1 day until first day of month.
+        }
+
+        final SimpleDateFormat df = new SimpleDateFormat("d MMM yyyy HH:mm:ss");
+        Log.e(TAG, "Source date " + df.format(currentCalendar.getTime()));
+
+        // obtain the weekday of the first day of month.
+        int firstWeekdayOfMonth = currentCalendar.get(Calendar.DAY_OF_WEEK);
+
+        // obtain the number of days in month.
+        int numberOfMonthDays = currentCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        // reset index of weekday
+        int weekdayIndex = 0;
+
+        // print calendar weekday header
+        //System.out.println("Su Tu  We  Th  Fr  Sa");
+
+        //1.  calculate total rows
+        float totalDaysInCalendar = (numberOfMonthDays + firstWeekdayOfMonth);
+        int totalWeeks = (int) (((totalDaysInCalendar % 7) > 0) ? ((totalDaysInCalendar / 7) + 1) : (totalDaysInCalendar / 7));
+
+        StringBuilder dayString = new StringBuilder().append("\n\n");
+        for (int week = 1; week <= totalWeeks; week++) {
+            for (int dayInWeek = 1; dayInWeek <= 7; dayInWeek++) {
+
+                //If first week
+                if (week == 1 && dayInWeek < firstWeekdayOfMonth){
+                    dayString.append("    ");
+                    continue;
+                }
+
+                //for last week
+                if (week == totalWeeks && week * dayInWeek > numberOfMonthDays + firstWeekdayOfMonth) {
+                    dayString.append("    ");
+                    continue;
+                }
+
+                dayString.append(week).append("   ");
+            }
+            dayString.append("\n");
+        }
+
+        Log.e(TAG, dayString.toString());
+    }*/
+
+    public void setDaysInCalendar() {
+        Calendar currentCalendar = Calendar.getInstance();
+        currentCalendar.setTime(new Date());
+
+        Calendar calendar = Calendar.getInstance(Locale.US);
+        calendar.setTime(currentCalendar.getTime());
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        int firstDayOfMonth = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // Calculate dayOfMonthIndex
+        int dayOfMonthIndex = getWeekIndex(firstDayOfMonth, calendar);
+        int actualMaximum = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        final Calendar startCalendar = (Calendar) calendar.clone();
+        //Add required number of days
+        startCalendar.add(Calendar.DATE, -(dayOfMonthIndex - 1));
+        int monthEndIndex = 42 - (actualMaximum + dayOfMonthIndex - 1);
+
+        //1.  calculate total rows
+        float totalDaysInCalendar = (actualMaximum + firstDayOfMonth);
+        int totalWeeks = (int) (((totalDaysInCalendar % 7) > 0) ? ((totalDaysInCalendar / 7) + 1) : (totalDaysInCalendar / 7));
+
+        for (int week = 1; week <= totalWeeks; week++) {
+            ViewGroup dayOfMonthContainer = (ViewGroup) view.findViewWithTag(Utils.WEEK_OF_MONTH_CONTAINER + week);
+            for (int dayInWeek = 1; dayInWeek <= 7; dayInWeek++) {
+
+            }
+        }
+    }
 
 
     /*private void setDaysInCalendar() {
@@ -349,7 +429,7 @@ public class CustomCalendarViewNew extends LinearLayout {
         }
     }
 
-    private int getWeekIndex(int weekIndex, Calendar currentCalendar) {
+    public int getWeekIndex(int weekIndex, Calendar currentCalendar) {
         int firstDayWeekPosition = currentCalendar.getFirstDayOfWeek();
         if (firstDayWeekPosition == 1) {
             return weekIndex;
