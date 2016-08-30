@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2016 Stacktips {link: http://stacktips.com}.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.stacktips.view;
 
 import android.annotation.SuppressLint;
@@ -12,9 +27,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.imanoweb.calendarview.R;
-
+import com.stacktips.view.utils.CalendarUtils;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,20 +37,16 @@ import java.util.Locale;
 
 public class CustomCalendarView extends LinearLayout {
     private Context mContext;
-
     private View view;
     private ImageView previousMonthButton;
     private ImageView nextMonthButton;
-
     private CalendarListener calendarListener;
     private Calendar currentCalendar;
     private Locale locale;
-
     private Date lastSelectedDay;
     private Typeface customTypeface;
 
     private int firstDayOfWeek = Calendar.SUNDAY;
-
     private List<DayDecorator> decorators = null;
 
     private static final String DAY_OF_WEEK = "dayOfWeek";
@@ -170,10 +180,10 @@ public class CustomCalendarView extends LinearLayout {
         final String[] weekDaysArray = new DateFormatSymbols(locale).getShortWeekdays();
         for (int i = 1; i < weekDaysArray.length; i++) {
             dayOfTheWeekString = weekDaysArray[i];
-            if(dayOfTheWeekString.length() > 3){
+            if (dayOfTheWeekString.length() > 3) {
                 dayOfTheWeekString = dayOfTheWeekString.substring(0, 3).toUpperCase();
             }
-            
+
             dayOfWeek = (TextView) view.findViewWithTag(DAY_OF_WEEK + getWeekIndex(i, currentCalendar));
             dayOfWeek.setText(dayOfTheWeekString);
             dayOfWeek.setTextColor(dayOfWeekTextColor);
@@ -217,7 +227,7 @@ public class CustomCalendarView extends LinearLayout {
                 dayView.setTypeface(getCustomTypeface());
             }
 
-            if (isSameMonth(calendar, startCalendar)) {
+            if (CalendarUtils.isSameMonth(calendar, startCalendar)) {
                 dayOfMonthContainer.setOnClickListener(onDayOfMonthClickListener);
                 dayView.setBackgroundColor(calendarBackgroundColor);
                 dayView.setTextColor(dayOfWeekTextColor);
@@ -236,7 +246,6 @@ public class CustomCalendarView extends LinearLayout {
             dayView.decorate();
 
 
-
             startCalendar.add(Calendar.DATE, 1);
             dayOfMonthIndex++;
         }
@@ -250,35 +259,6 @@ public class CustomCalendarView extends LinearLayout {
             weekRow.setVisibility(VISIBLE);
         }
     }
-
-
-    public boolean isSameMonth(Calendar c1, Calendar c2) {
-        if (c1 == null || c2 == null)
-            return false;
-        return (c1.get(Calendar.ERA) == c2.get(Calendar.ERA)
-                && c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR)
-                && c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH));
-    }
-
-    /**
-     * <p>Checks if a calendar is today.</p>
-     *
-     * @param calendar the calendar, not altered, not null.
-     * @return true if the calendar is today.
-     * @throws IllegalArgumentException if the calendar is <code>null</code>
-     */
-    public static boolean isToday(Calendar calendar) {
-        return isSameDay(calendar, Calendar.getInstance());
-    }
-
-    public static boolean isSameDay(Calendar cal1, Calendar cal2) {
-        if (cal1 == null || cal2 == null)
-            throw new IllegalArgumentException("The dates must not be null");
-        return (cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
-                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
-    }
-
 
     private void clearDayOfTheMonthStyle(Date currentDate) {
         if (currentDate != null) {
@@ -375,7 +355,7 @@ public class CustomCalendarView extends LinearLayout {
     }
 
     public void markDayAsCurrentDay(Calendar calendar) {
-        if (calendar != null && isToday(calendar)) {
+        if (calendar != null && CalendarUtils.isToday(calendar)) {
             DayView dayOfMonth = getDayOfMonthText(calendar);
             dayOfMonth.setTextColor(currentDayOfMonth);
         }

@@ -30,9 +30,6 @@
             android:name=".CustomisedCalendarActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity
-            android:name=".SimpleCalendarActivityNew"
-            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -1,7 +1,5 @@
-package com.stacktips.calendar;
-
 /*
- *  Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
+ * Copyright (c) 2016 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +13,8 @@ package com.stacktips.calendar;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.stacktips.calendar;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -75,10 +75,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             startActivity(new Intent(this, CalendarDayDecoratorActivity.class));
         } else if (selectedValue.equals(getString(R.string.customizing_custom_calendar))) {
             startActivity(new Intent(this, CustomisedCalendarActivity.class));
-        } else if (selectedValue.equals(getString(R.string.calendar_localization))) {
-            startActivity(new Intent(this, SimpleCalendarActivityNew.class));
-        } else {
-            Toast.makeText(this, "Feature not implemented!", Toast.LENGTH_SHORT).show();
         }
     }
 }

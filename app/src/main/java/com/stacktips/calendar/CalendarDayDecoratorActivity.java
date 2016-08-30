@@ -1,7 +1,5 @@
-package com.stacktips.calendar;
-
 /*
- * Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
+ * Copyright (c) 2016 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +14,40 @@ package com.stacktips.calendar;
  * limitations under the License.
  */
 
+package com.stacktips.calendar;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.stacktips.view.CalendarListener;
 import com.stacktips.view.CustomCalendarView;
 import com.stacktips.view.DayDecorator;
 import com.stacktips.view.DayView;
+import com.stacktips.view.utils.CalendarUtils;
+
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 
 public class CalendarDayDecoratorActivity extends AppCompatActivity {
     CustomCalendarView calendarView;
+    private TextView selectedDateTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simple_calendar);
+        setContentView(R.layout.activity_calendar_decorator);
+        selectedDateTv = (TextView) findViewById(R.id.selected_date);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,8 +73,12 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
         calendarView.setCalendarListener(new CalendarListener() {
             @Override
             public void onDateSelected(Date date) {
-                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                Toast.makeText(CalendarDayDecoratorActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+                if (!CalendarUtils.isPastDay(date)) {
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                    selectedDateTv.setText("Selected date is " + df.format(date));
+                } else {
+                    selectedDateTv.setText("Selected date is disabled!");
+                }
             }
 
             @Override
@@ -80,7 +91,7 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
 
         //adding calendar day decorators
         List<DayDecorator> decorators = new ArrayList<>();
-        decorators.add(new ColorDecorator());
+        decorators.add(new DisabledColorDecorator());
         calendarView.setDecorators(decorators);
         calendarView.refreshCalendar(currentCalendar);
     }
@@ -94,12 +105,14 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class ColorDecorator implements DayDecorator {
+    private class DisabledColorDecorator implements DayDecorator {
         @Override
-        public void decorate(DayView cell) {
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-            cell.setBackgroundColor(color);
+        public void decorate(DayView dayView) {
+            if (CalendarUtils.isPastDay(dayView.getDate())) {
+                int color = Color.parseColor("#a9afb9");
+                dayView.setBackgroundColor(color);
+            }
         }
     }
+
 }

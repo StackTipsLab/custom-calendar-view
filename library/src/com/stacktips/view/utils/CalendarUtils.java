@@ -1,8 +1,5 @@
 package com.stacktips.view.utils;
 
-import android.content.Context;
-import android.util.DisplayMetrics;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,37 +7,9 @@ import java.util.Date;
  * Created by Nilanchala Panigrahy on 8/24/16.
  */
 
-public class Utils {
-    public static final String DAY_OF_THE_MONTH = "dayOfMonthText";
-    public static final String WEEK_OF_MONTH_CONTAINER = "weekOfMonthContainer";
+public class CalendarUtils {
 
-    public static final String ROBOTO_CALENDAR_WEK = "roboto_calendar_week";
-    public static final String DAY_OF_WEEK = "dayOfWeek";
-
-    //private static final String DAY_OF_WEEK = "dayOfWeek";
-    //private static final String DAY_OF_MONTH_TEXT = "dayOfMonthText";
-    //private static final String DAY_OF_MONTH_CONTAINER = "dayOfMonthContainer";
-
-    public static int dpToPx(Context context, float dp) {
-        int px = Math.round(dp * getPixelScaleFactor(context));
-        return px;
-    }
-
-    public static int pxToDp(Context context, int px) {
-        int dp = Math.round(px / getPixelScaleFactor(context));
-        return dp;
-    }
-
-    private static float getPixelScaleFactor(Context context) {
-        if (null != context) {
-            DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-            return (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT);
-        } else {
-            return (1.0f / DisplayMetrics.DENSITY_DEFAULT) * DisplayMetrics.DENSITY_XHIGH;
-        }
-    }
-
-    public boolean isSameMonth(Calendar c1, Calendar c2) {
+    public static boolean isSameMonth(Calendar c1, Calendar c2) {
         if (c1 == null || c2 == null)
             return false;
         return (c1.get(Calendar.ERA) == c2.get(Calendar.ERA)
@@ -78,6 +47,15 @@ public class Utils {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return getTotalWeeks(cal);
+    }
+
+    public static boolean isPastDay(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return (date.before(calendar.getTime())) ? true : false;
     }
 
 }

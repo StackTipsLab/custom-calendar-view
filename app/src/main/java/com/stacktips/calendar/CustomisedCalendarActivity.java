@@ -1,7 +1,5 @@
-package com.stacktips.calendar;
-
 /*
- *  Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
+ * Copyright (c) 2016 Stacktips {link: http://stacktips.com}.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +13,8 @@ package com.stacktips.calendar;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+package com.stacktips.calendar;
 
 import android.graphics.Typeface;
 import android.os.Bundle;

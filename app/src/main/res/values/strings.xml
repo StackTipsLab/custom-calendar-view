@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">Calendar View</string>
     <string name="action_about">About</string>
-
     <string name="simple_calendar">Simple Calendar</string>
     <string name="calendar_day_decorator">Calendar Day Decorator</string>
     <string name="customizing_custom_calendar">Customizing Calendar View</string>
-    <string name="calendar_localization">Calendar Localization</string>
 
     <array name="calendar_demos">
         <item>@string/simple_calendar</item>
         <item>@string/calendar_day_decorator</item>
         <item>@string/customizing_custom_calendar</item>
-        <item>@string/calendar_localization</item>
     </array>
 </resources>
