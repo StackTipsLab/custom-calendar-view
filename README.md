@@ -11,7 +11,7 @@ Currently it supports the following features:
 * Unlimited customizations for day of the month using custom Decorators.
 * Allow you to handle event when user changes month and day selection.
 
-If you enjoy this library, don’t forget to follow me on [@stacktips](https://www.twitter.com/stacktips) [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my blog at [http://stacktips.com](https://stacktips.com/)
+If you enjoy this library, don’t forget to follow me on [@stacktips](https://www.twitter.com/stacktips) or [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my blog at [http://stacktips.com](https://stacktips.com/)
 
 ![alt text][logo]
 
