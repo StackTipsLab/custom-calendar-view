@@ -1,7 +1,7 @@
 # Custom-Calendar-View
 To use the CustomCalendarView in your application, you first need to add the library to your application. You can do this by either from Gradle, Maven or by directly downloading the source code form GitHub.
 
-If you enjoy this library, don’t forget to follow me on Twitter [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my blog at [http://stacktips.com](https://stacktips.com/)
+If you enjoy this library, don’t forget to follow me on Twitter [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my [blog](https://stacktips.com/).
 
 ## Features
 Currently it supports the following features:
