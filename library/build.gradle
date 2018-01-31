@@ -10,6 +10,13 @@ android {
             res.srcDirs = ['res']
             assets.srcDir("assets")
         }
+        test {
+            java.srcDirs = ['test']
+        }
+    }
+
+    dependencies {
+        testImplementation 'junit:junit:4.12'
     }
 }
 
