@@ -1,17 +1,17 @@
 # Custom-Calendar-View
-To use the CustomCalendarView in your application, you first need to add the library to your application. You can do this by either from Gradle, Maven or by directly downloading the source code form GitHub.
+To use the CustomCalendarView in your application, you first need to add the library to your application. You can do this by either from Gradle, Maven or by directly downloading the source code from GitHub.
 
-If you enjoy this library, don’t forget to follow me on Twitter [@npanigrahy](https://www.twitter.com/npanigrahy) or visit my [blog](https://stacktips.com/).
+If you enjoy this library, don’t forget to follow me on Twitter [@npanigrahy](https://www.twitter.com/askNilan) or visit my [blog](https://stacktips.com/).
 
 ## Features
-Currently it supports the following features:
-* Next and previous month navigation
-* Allow various customization including background color for day, week and title
+Currently, it supports the following features:
+* Next and previous month's navigation
+* Allow various customization including background colour for day, week and title
 * Set custom typeface using setCustomTypeFace() method.
-* Show hide next previous month overflow days
-* Set custom day options for start day of week. By default it is set to Calendar.SUNDAY
-* Unlimited customizations for day of the month using custom Decorators.
-* Allow you to handle event when user changes month and day selection.
+* Show hide next previous month's overflow days
+* Set custom day options for the start day of the week. By default, it is set to Calendar.SUNDAY
+* Unlimited customizations for a day of the month using custom Decorators.
+* Allow you to handle events when the user changes month and day selection.
 
 ![alt text][logo]
 
