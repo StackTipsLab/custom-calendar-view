@@ -16,6 +16,7 @@
 
 package com.stacktips.calendar;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CalendarDayDecoratorActivity extends AppCompatActivity {
     CustomCalendarView calendarView;
@@ -51,7 +53,7 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //Initialize CustomCalendarView from layout
@@ -71,11 +73,12 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
 
         //Handling custom calendar events
         calendarView.setCalendarListener(new CalendarListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDateSelected(Date date) {
                 if (!CalendarUtils.isPastDay(date)) {
-                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                    selectedDateTv.setText("Selected date is " + df.format(date));
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                    selectedDateTv.setText("Selected date is {}" + df.format(date));
                 } else {
                     selectedDateTv.setText("Selected date is disabled!");
                 }
@@ -83,7 +86,7 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
 
             @Override
             public void onMonthChanged(Date date) {
-                SimpleDateFormat df = new SimpleDateFormat("MM-yyyy");
+                SimpleDateFormat df = new SimpleDateFormat("MM-yyyy", Locale.getDefault());
                 Toast.makeText(CalendarDayDecoratorActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
         });
@@ -105,14 +108,5 @@ public class CalendarDayDecoratorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class DisabledColorDecorator implements DayDecorator {
-        @Override
-        public void decorate(DayView dayView) {
-            if (CalendarUtils.isPastDay(dayView.getDate())) {
-                int color = Color.parseColor("#a9afb9");
-                dayView.setBackgroundColor(color);
-            }
-        }
-    }
 
 }

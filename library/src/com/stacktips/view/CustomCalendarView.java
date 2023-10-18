@@ -28,9 +28,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.imanoweb.calendarview.R;
+import com.stacktips.calendarview.R;
 import com.stacktips.view.utils.CalendarUtils;
-
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
@@ -165,7 +164,7 @@ public class CustomCalendarView extends LinearLayout {
 
         TextView dateTitle = (TextView) view.findViewById(R.id.dateTitle);
         dateTitle.setTextColor(calendarTitleTextColor);
-        dateTitle.setText(dateText + " " + currentCalendar.get(Calendar.YEAR));
+        dateTitle.setText(new StringBuilder().append(dateText).append(" ").append(currentCalendar.get(Calendar.YEAR)).toString());
         dateTitle.setTextColor(calendarTitleTextColor);
         if (null != getCustomTypeface()) {
             dateTitle.setTypeface(getCustomTypeface(), Typeface.BOLD);
