@@ -83,6 +83,8 @@ The above code snippet will show the simple Calendar View with default design. N
         app:dayOfWeekTextColor="@color/black"
         app:disabledDayBackgroundColor="@color/off_white"
         app:disabledDayTextColor="@color/grey"
+        app:nextMonthNavigationIcon="@drawable/button_next_month_selector"
+        app:previousMonthNavigationIcon="@drawable/button_previous_month_selector"
         app:selectedDayBackgroundColor="@color/blue"
         app:titleLayoutBackgroundColor="@color/white"
         app:weekLayoutBackgroundColor="@color/white">

@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 27
 
     sourceSets {
         main {
@@ -11,6 +10,13 @@ android {
             res.srcDirs = ['res']
             assets.srcDir("assets")
         }
+        test {
+            java.srcDirs = ['test']
+        }
+    }
+
+    dependencies {
+        testImplementation 'junit:junit:4.12'
     }
 }
 

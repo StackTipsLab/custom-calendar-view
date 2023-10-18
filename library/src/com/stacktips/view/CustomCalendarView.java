@@ -27,8 +27,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.imanoweb.calendarview.R;
 import com.stacktips.view.utils.CalendarUtils;
+
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
@@ -64,6 +66,8 @@ public class CustomCalendarView extends LinearLayout {
     private int dayOfWeekTextColor;
     private int dayOfMonthTextColor;
     private int currentDayOfMonth;
+    private int previousMonthDrawableResource;
+    private int nextMonthDrawableResource;
 
     private int currentMonthIndex = 0;
     private boolean isOverflowDateVisible = true;
@@ -99,14 +103,18 @@ public class CustomCalendarView extends LinearLayout {
         selectedDayBackground = typedArray.getColor(R.styleable.CustomCalendarView_selectedDayBackgroundColor, getResources().getColor(R.color.selected_day_background));
         selectedDayTextColor = typedArray.getColor(R.styleable.CustomCalendarView_selectedDayTextColor, getResources().getColor(R.color.white));
         currentDayOfMonth = typedArray.getColor(R.styleable.CustomCalendarView_currentDayOfMonthColor, getResources().getColor(R.color.current_day_of_month));
+        previousMonthDrawableResource = typedArray.getResourceId(R.styleable.CustomCalendarView_previousMonthNavigationIcon, R.drawable.button_previous_month_selector);
+        nextMonthDrawableResource = typedArray.getResourceId(R.styleable.CustomCalendarView_previousMonthNavigationIcon, R.drawable.button_next_month_selector);
         typedArray.recycle();
     }
 
     private void initializeCalendar() {
         final LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflate.inflate(R.layout.custom_calendar_layout, this, true);
-        previousMonthButton = (ImageView) view.findViewById(R.id.leftButton);
-        nextMonthButton = (ImageView) view.findViewById(R.id.rightButton);
+        previousMonthButton = view.findViewById(R.id.leftButton);
+        previousMonthButton.setImageResource(previousMonthDrawableResource);
+        nextMonthButton = view.findViewById(R.id.rightButton);
+        nextMonthButton.setImageResource(nextMonthDrawableResource);
 
         previousMonthButton.setOnClickListener(new OnClickListener() {
             @Override

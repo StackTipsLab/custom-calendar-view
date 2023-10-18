@@ -13,5 +13,8 @@
         <attr name="weekLayoutBackgroundColor" format="color" />
         <attr name="titleLayoutBackgroundColor" format="color" />
         <attr name="currentDayOfMonthColor" format="color" />
+        <attr name="previousMonthNavigationIcon" format="reference" />
+        <attr name="nextMonthNavigationIcon" format="reference" />
+
     </declare-styleable>
 </resources>
