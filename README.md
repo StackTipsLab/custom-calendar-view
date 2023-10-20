@@ -5,7 +5,7 @@ application. You can do this by either from Gradle, Maven or by directly downloa
 from GitHub.
 
 If you enjoy this library, don’t forget to follow me on
-Twitter [@asknilan](https://www.twitter.com/asknilan) or visit my [blog](https://stacktips.com/).
+Twitter [@asknilan](https://www.twitter.com/asknilan) or visit my [stacktips.com](https://stacktips.com/).
 
 ## Features
 
@@ -25,56 +25,49 @@ Currently, it supports the following features:
 
 ### Gradle
 
-**Step 1** Add the JitPack repository to your build file. Add it in your build.gradle at the end of
-repositories.
+Add it in your root build.gradle at the end of repositories:
 
-```java
-  repositories{
-        maven{url"https://jitpack.io"}
-        }
+```groovy
+ dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+   mavenCentral()
+   maven { url 'https://jitpack.io' }
+  }
+ }
 ```
 
-**Step-2** Add the dependency in the form
+Step 2: Add the dependency
 
-```java
-dependencies{
-        compile'com.github.npanigrahy:Custom-Calendar-View:v1.0'
-        }
+```groovy
+ dependencies {
+         implementation 'com.github.StackTipsLab:custom-calendar-view:1.2.0'
+ }
 ```
+
 
 ### Maven
 
 ```xml
 
-<repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-</repository>
+<repositories>
+  <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+  </repository>
+ </repositories>
+
 ```
 
 **Step 2** Add the dependency in the form
 
 ```xml
 
-<dependency>
-    <groupId>com.github.asknilan</groupId>
-    <artifactId>Custom-Calendar-View</artifactId>
-    <version>v1.0</version>
-</dependency>
-```
-
-### Sbt
-
-**Step-1** Add it in your build.sbt at the end of resolvers:
-
-```java
-resolvers+="jitpack"at"https://jitpack.io"
-```
-
-**Step-2** Add the dependency in the form
-
-```java
-libraryDependencies+="com.github.npanigrahy"%"Custom-Calendar-View"%"v1.0"
+ <dependency>
+     <groupId>com.github.StackTipsLab</groupId>
+     <artifactId>custom-calendar-view</artifactId>
+     <version>1.2.0</version>
+ </dependency>
 ```
 
 ## Using CustomCalendarView Library
@@ -85,9 +78,12 @@ include the CustomCalendarView into your activity/fragment layout using the foll
 
 ```xml
 
-<com.stacktips.view.CustomCalendarView android:id="@+id/calendar_view"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="#ffffff"></com.stacktips.view.CustomCalendarView>
+<com.stacktips.view.CustomCalendarView 
+    android:id="@+id/calendar_view"
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+</com.stacktips.view.CustomCalendarView>
 ```
 
 The above code snippet will show the simple Calendar View with default design. Now, you can use the
@@ -95,16 +91,24 @@ following attributes, to customize the appearance of calendar.
 
 ```xml
 
-<com.stacktips.view.CustomCalendarView android:id="@+id/calendar_view"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@color/off_white" app:calendarBackgroundColor="@color/off_white"
-    app:calendarTitleTextColor="@color/black" app:currentDayOfMonthColor="@color/blue"
-    app:dayOfMonthTextColor="@color/black" app:dayOfWeekTextColor="@color/black"
-    app:disabledDayBackgroundColor="@color/off_white" app:disabledDayTextColor="@color/grey"
-    app:nextMonthNavigationIcon="@drawable/button_next_month_selector"
-    app:previousMonthNavigationIcon="@drawable/button_previous_month_selector"
-    app:selectedDayBackgroundColor="@color/blue" app:titleLayoutBackgroundColor="@color/white"
-    app:weekLayoutBackgroundColor="@color/white"></com.stacktips.view.CustomCalendarView>
+<com.stacktips.view.CustomCalendarView 
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:background="@color/off_white" 
+        app:calendarBackgroundColor="@color/off_white"
+        app:calendarTitleTextColor="@color/black" 
+        app:currentDayOfMonthColor="@color/blue"
+        app:dayOfMonthTextColor="@color/black" 
+        app:dayOfWeekTextColor="@color/black"
+        app:disabledDayBackgroundColor="@color/off_white" 
+        app:disabledDayTextColor="@color/grey"
+        app:nextMonthNavigationIcon="@drawable/button_next_month_selector"
+        app:previousMonthNavigationIcon="@drawable/button_previous_month_selector"
+        app:selectedDayBackgroundColor="@color/blue" 
+        app:titleLayoutBackgroundColor="@color/white"
+        app:weekLayoutBackgroundColor="@color/white">
+</com.stacktips.view.CustomCalendarView>
 ```
 
 Let us now, initialize the calendar view to control the various other appearance and behavior of
@@ -115,31 +119,31 @@ calendar using the following methods.
 calendarView=(CustomCalendarView)findViewById(R.id.calendar_view);
 
 //Initialize calendar with date
-        Calendar currentCalendar=Calendar.getInstance(Locale.getDefault());
+Calendar currentCalendar=Calendar.getInstance(Locale.getDefault());
 
 //Show Monday as first date of week
-        calendarView.setFirstDayOfWeek(Calendar.MONDAY);
+calendarView.setFirstDayOfWeek(Calendar.MONDAY);
 
 //Show/hide overflow days of a month
-        calendarView.setShowOverflowDate(false);
+calendarView.setShowOverflowDate(false);
 
 //call refreshCalendar to update calendar the view
-        calendarView.refreshCalendar(currentCalendar);
+calendarView.refreshCalendar(currentCalendar);
 
 //Handling custom calendar events
-        calendarView.setCalendarListener(new CalendarListener(){
-@Override
-public void onDateSelected(Date date){
-        SimpleDateFormat df=new SimpleDateFormat("dd-MM-yyyy");
-        Toast.makeText(MainActivity.this,df.format(date),Toast.LENGTH_SHORT).show();
+calendarView.setCalendarListener(new CalendarListener(){
+        @Override
+        public void onDateSelected(Date date){
+                SimpleDateFormat df=new SimpleDateFormat("dd-MM-yyyy");
+                Toast.makeText(MainActivity.this,df.format(date),Toast.LENGTH_SHORT).show();
         }
 
-@Override
-public void onMonthChanged(Date date){
-        SimpleDateFormat df=new SimpleDateFormat("MM-yyyy");
-        Toast.makeText(MainActivity.this,df.format(date),Toast.LENGTH_SHORT).show();
+        @Override
+        public void onMonthChanged(Date date){
+                SimpleDateFormat df=new SimpleDateFormat("MM-yyyy");
+                Toast.makeText(MainActivity.this,df.format(date),Toast.LENGTH_SHORT).show();
         }
-        });
+});
 ```
 
 ## Using Custom TypeFace
@@ -147,10 +151,10 @@ public void onMonthChanged(Date date){
 ```java
 //Setting custom font
 final Typeface typeface=Typeface.createFromAsset(getAssets(),"fonts/Arch_Rival_Bold.ttf");
-        if(null!=typeface){
-        calendarView.setCustomTypeface(typeface);
-        calendarView.refreshCalendar(currentCalendar);
-        }
+if(null!=typeface){
+    calendarView.setCustomTypeface(typeface);
+    calendarView.refreshCalendar(currentCalendar);
+}
 ```
 
 Custom Calendar View Library in Android Custom Font
@@ -166,24 +170,4 @@ List decorators=new ArrayList<>();
         Custom Calendar View Library in Android Decorator
 ```
 
-<img src="http://stacktips.com/wp-content/uploads/2015/09/Custom-Calendar-View-Library-in-Android-Decorator.png" height="350">
-
-## License
-
-```
-/*
- * Copyright (C) 2015 Stacktips {link: http://stacktips.com}.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-```
+![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
