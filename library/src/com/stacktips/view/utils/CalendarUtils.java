@@ -14,9 +14,6 @@ import static java.util.Calendar.WEEK_OF_MONTH;
 import static java.util.Calendar.YEAR;
 import static java.util.Calendar.getInstance;
 
-/**
- * Created by Nilanchala Panigrahy on 8/24/16.
- */
 public class CalendarUtils {
 
     public static boolean isSameMonth(Calendar calendar1, Calendar calendar2) {
