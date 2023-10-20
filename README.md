@@ -19,9 +19,7 @@ Currently, it supports the following features:
 * Unlimited customizations for a day of the month using custom Decorators.
 * Allow you to handle events when the user changes month and day selection.
 
-![alt text][logo]
-
-[logo]: http://stacktips.com/wp-content/uploads/2015/09/Custom-Calendar-View-Android.png "Custom Calendar View Library in Android"
+![Alt text](/screenshot.001.jpeg "Custom Calendar View Library in Android")
 
 ### Gradle
 
