@@ -1,29 +1,29 @@
 # Custom-Calendar-View
 
 To use the CustomCalendarView in your application, you first need to add the library to your
-application. You can do this by either from Gradle, Maven or by directly downloading the source code
+application. You can do this either from Gradle, or Maven or by directly downloading the source code
 from GitHub.
 
 If you enjoy this library, don’t forget to follow me on
 Twitter [@asknilan](https://www.twitter.com/asknilan) or visit my [stacktips.com](https://stacktips.com/).
+
+![Alt text](/screenshot.001.jpeg "Custom Calendar View Library in Android")
 
 ## Features
 
 Currently, it supports the following features:
 
 * Next and previous month's navigation
-* Allow various customization including background colour for day, week and title
+* Allow various customization including background color for day, week, and title
 * Set custom typeface using setCustomTypeFace() method.
 * Show hide next previous month's overflow days
 * Set custom day options for the start day of the week. By default, it is set to Calendar.SUNDAY
 * Unlimited customizations for a day of the month using custom Decorators.
 * Allow you to handle events when the user changes month and day selection.
 
-![Alt text](/screenshot.001.jpeg "Custom Calendar View Library in Android")
-
 ### Gradle
 
-Add it in your root build.gradle at the end of repositories:
+Add it to your root `build.gradle` at the end of repositories:
 
 ```groovy
  dependencyResolutionManagement {
@@ -84,8 +84,8 @@ include the CustomCalendarView into your activity/fragment layout using the foll
 </com.stacktips.view.CustomCalendarView>
 ```
 
-The above code snippet will show the simple Calendar View with default design. Now, you can use the
-following attributes, to customize the appearance of calendar.
+The above code snippet will show the simple Calendar View with the default design. Now, you can use the
+following attributes, to customize the appearance of the calendar.
 
 ```xml
 
@@ -109,7 +109,7 @@ following attributes, to customize the appearance of calendar.
 </com.stacktips.view.CustomCalendarView>
 ```
 
-Let us now, initialize the calendar view to control the various other appearance and behavior of
+Let us now initialize the calendar view to control the various other appearances and behavior of
 calendar using the following methods.
 
 ```java
@@ -119,7 +119,7 @@ calendarView=(CustomCalendarView)findViewById(R.id.calendar_view);
 //Initialize calendar with date
 Calendar currentCalendar=Calendar.getInstance(Locale.getDefault());
 
-//Show Monday as first date of week
+//Show Monday as the first date of the week
 calendarView.setFirstDayOfWeek(Calendar.MONDAY);
 
 //Show/hide overflow days of a month
@@ -167,5 +167,3 @@ List decorators=new ArrayList<>();
         calendarView.refreshCalendar(currentCalendar);
         Custom Calendar View Library in Android Decorator
 ```
-
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
